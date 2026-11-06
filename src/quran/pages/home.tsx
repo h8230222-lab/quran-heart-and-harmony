@@ -1,122 +1,83 @@
 import { Link } from "@/quran/wouter-shim";
-import illuminatedBookAsset from "@/assets/home-buttons/illuminated-book-button.jpg.asset.json";
+import {
+  BookOpen, Headphones, Mic2, Sparkles, ScrollText, BookText, Clock,
+  Compass, HandHeart, Sun, CircleDot, Bell, Play, ChevronLeft,
+} from "lucide-react";
 
-const homeBackground = `${import.meta.env.BASE_URL}quran-home-4k.jpg`;
-const buttonAsset = (name: string) =>
-  `${import.meta.env.BASE_URL}home-buttons/${name}.png`;
+const sheikh = `${import.meta.env.BASE_URL}minshawi.jpg`;
 
-const homeButtons = [
-  {
-    href: "/quran-audio",
-    image: "offline-new",
-    label: "القرآن الكريم مرتل بدون نت",
-    testid: "link-quran-audio",
-  },
-  {
-    href: "/quran-tajweed",
-    image: "tajweed-new",
-    label: "القرآن الكريم مجود",
-    testid: "link-quran-tajweed",
-  },
-  {
-    href: "/asma-husna",
-    image: "asma",
-    label: "أسماء الله الحسنى",
-    testid: "link-asma-husna",
-  },
-  {
-    href: "/hadith",
-    image: "hadith-new",
-    label: "الأحاديث النبوية",
-    testid: "link-hadith",
-  },
-  {
-    href: "/quran-written",
-    image: "written-new",
-    label: "القرآن الكريم مكتوب",
-    testid: "link-quran-written",
-  },
-  {
-    href: "/prayer-times",
-    image: "prayer-new",
-    label: "مواقيت الصلاة",
-    testid: "link-prayer-times",
-  },
-  {
-    href: "/qibla",
-    image: "qibla-new",
-    label: "تحديد اتجاه القبلة",
-    testid: "link-qibla",
-  },
-  {
-    href: "/duas",
-    image: "duas-new",
-    label: "الدعاء",
-    testid: "link-duas",
-  },
-  {
-    href: "/adhkar",
-    image: "adhkar-new",
-    label: "الأذكار",
-    testid: "link-adhkar",
-  },
-  {
-    href: "/tasbeeh",
-    image: "tasbeeh-new",
-    label: "التسابيح",
-    testid: "link-tasbeeh",
-  },
+const sections = [
+  { href: "/quran-audio", icon: Headphones, label: "القرآن مرتل", sub: "استماع بدون إنترنت", testid: "link-quran-audio" },
+  { href: "/quran-tajweed", icon: Mic2, label: "القرآن مجود", sub: "تلاوة بأحكام التجويد", testid: "link-quran-tajweed" },
+  { href: "/quran-written", icon: BookOpen, label: "المصحف المكتوب", sub: "النص الكامل للمصحف", testid: "link-quran-written" },
+  { href: "/hadith", icon: ScrollText, label: "الأحاديث النبوية", sub: "أحاديث صحيحة", testid: "link-hadith" },
+  { href: "/asma-husna", icon: BookText, label: "أسماء الله الحسنى", sub: "شرح ومعاني", testid: "link-asma-husna" },
+  { href: "/prayer-times", icon: Clock, label: "مواقيت الصلاة", sub: "حسب موقعك", testid: "link-prayer-times" },
+  { href: "/qibla", icon: Compass, label: "اتجاه القبلة", sub: "بوصلة دقيقة", testid: "link-qibla" },
+  { href: "/duas", icon: HandHeart, label: "الدعاء", sub: "أدعية مأثورة", testid: "link-duas" },
+  { href: "/adhkar", icon: Sun, label: "الأذكار", sub: "الصباح والمساء", testid: "link-adhkar" },
+  { href: "/tasbeeh", icon: CircleDot, label: "التسابيح", sub: "سبحة إلكترونية", testid: "link-tasbeeh" },
 ] as const;
 
 export default function Home() {
   return (
-    <main
-      className="quran-home-screen"
-      dir="rtl"
-      aria-label="الصفحة الرئيسية"
-    >
-      <div className="quran-home-art">
-        <div
-          className="quran-home-header"
-          style={{ backgroundImage: `url(${homeBackground})` }}
-          aria-hidden="true"
-        />
-        <div
-          className="quran-home-bottom-background"
-          style={{ backgroundImage: `url(${homeBackground})` }}
-          aria-hidden="true"
-        />
-        <nav className="home-button-stack" aria-label="أقسام التطبيق">
-              <Link
-                href="/illuminated-book"
-                className="home-image-button"
-                data-testid="link-illuminated-book"
-                aria-label="الكتاب المضيئ"
-              >
-                <img src={illuminatedBookAsset.url} alt="الكتاب المضيئ — اسأل واعرف وتعلم" draggable={false} />
+    <main className="home-calm" dir="rtl" aria-label="الصفحة الرئيسية">
+      <div className="mx-auto max-w-xl px-4 pb-10 pt-6">
+        <header className="home-fade mb-5 flex items-center justify-between">
+          <div>
+            <p className="text-xs text-muted-foreground">السلام عليكم</p>
+            <h1 className="text-2xl font-extrabold text-foreground">تقوى القلوب</h1>
+          </div>
+          <Link href="/notifications" aria-label="الإشعارات" data-testid="link-notifications"
+            className="grid h-11 w-11 place-items-center rounded-2xl border border-border bg-card text-primary">
+            <Bell className="h-5 w-5" />
+          </Link>
+        </header>
+
+        <section className="home-hero home-fade p-5">
+          <div className="relative flex items-center gap-4">
+            <div className="flex-1">
+              <span className="inline-block rounded-full bg-accent/25 px-3 py-1 text-[11px] font-semibold">فضيلة الشيخ</span>
+              <h2 className="mt-2 font-serif text-2xl leading-snug">محمد صديق المنشاوي</h2>
+              <p className="mt-1 text-sm opacity-80">استمع إلى القرآن الكريم بصوت خاشع</p>
+              <Link href="/quran-audio"
+                className="mt-4 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-bold text-accent-foreground">
+                <Play className="h-4 w-4 fill-current" /> ابدأ الاستماع
               </Link>
-          {homeButtons.map((button) => (
-            <Link
-              key={button.href}
-              href={button.href}
-              className="home-image-button"
-              data-testid={button.testid}
-              aria-label={button.label}
-            >
-              <img
-                src={buttonAsset(button.image)}
-                alt={button.label}
-                draggable={false}
-              />
+            </div>
+            <div className="home-ring shrink-0">
+              <img src={sheikh} alt="الشيخ محمد صديق المنشاوي" className="h-28 w-28 rounded-full bg-card object-cover object-top" draggable={false} />
+            </div>
+          </div>
+        </section>
+
+        <Link href="/illuminated-book" data-testid="link-illuminated-book"
+          className="home-tile home-fade mt-4 !flex-row items-center">
+          <span className="home-icon !bg-accent/15 !text-accent-foreground"><Sparkles className="h-5 w-5" /></span>
+          <span className="flex-1">
+            <span className="block font-bold text-foreground">الكتاب المضيء</span>
+            <span className="block text-xs text-muted-foreground">اسأل واعرف وتعلّم</span>
+          </span>
+          <ChevronLeft className="h-5 w-5 text-muted-foreground" />
+        </Link>
+
+        <h3 className="mb-3 mt-7 text-lg font-bold text-foreground">الأقسام</h3>
+        <nav className="grid grid-cols-2 gap-3" aria-label="أقسام التطبيق">
+          {sections.map((s, i) => (
+            <Link key={s.href} href={s.href} data-testid={s.testid} aria-label={s.label}
+              className="home-tile home-fade" style={{ animationDelay: `${80 + i * 40}ms` }}>
+              <span className="home-icon"><s.icon className="h-5 w-5" /></span>
+              <span>
+                <span className="block font-bold text-foreground">{s.label}</span>
+                <span className="block text-xs text-muted-foreground">{s.sub}</span>
+              </span>
             </Link>
           ))}
-          <Link href="/notifications" className="block rounded-xl border border-border bg-card py-3 text-center font-bold text-foreground" data-testid="link-notifications">
-            🔔 الإشعارات والتذكير
-          </Link>
-          <Link href="/privacy" className="block py-2 text-center text-sm text-muted-foreground underline" data-testid="link-privacy">
-            سياسة الخصوصية
-          </Link>
         </nav>
+
+        <Link href="/privacy" data-testid="link-privacy" className="mt-8 block text-center text-xs text-muted-foreground underline">
+          سياسة الخصوصية
+        </Link>
       </div>
     </main>
   );
