@@ -4,7 +4,7 @@ import {
   Compass, HandHeart, Sun, CircleDot, Bell, Play, ChevronLeft,
 } from "lucide-react";
 
-const sheikh = `${import.meta.env.BASE_URL}sheikh-clear.png`;
+const sheikh = `${import.meta.env.BASE_URL}minshawi.jpg`;
 
 const sections = [
   { href: "/quran-audio", icon: Headphones, label: "القرآن مرتل", sub: "استماع بدون إنترنت", testid: "link-quran-audio" },
