@@ -82,7 +82,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="home-ring shrink-0">
-              <img src={sheikh} alt="الشيخ محمد صديق المنشاوي" className="h-28 w-28 rounded-full bg-card object-cover" draggable={false} />
+              <img src={sheikh} alt="الشيخ محمد صديق المنشاوي" className="h-28 w-28 rounded-full bg-card object-cover object-[50%_15%]" draggable={false} />
             </div>
           </div>
         </section>
